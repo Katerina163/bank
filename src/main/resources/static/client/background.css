@@ -1,0 +1,20 @@
+body {
+    background:
+            radial-gradient(28px at calc(100% + calc(28px*.866)) 50%,#f7ff87 99%, #0000 101%) 0 calc(-5*28px/2),
+            radial-gradient(28px at calc(100% + calc(28px*.866)) 50%,#f7ff87 99%, #0000 101%) calc(-2*calc(28px*.866)) calc(28px/2),
+            radial-gradient(28px at 100% 50%,#87ff9e 99%, #0000 101%) 0 calc(-2*28px),
+            radial-gradient(28px,#f7ff87 99%, #0000 101%) calc(28px*.866) calc(-5*28px/2),
+            radial-gradient(28px,#87ff9e 99%, #0000 101%) calc(28px*.866) calc( 5*28px/2),
+            radial-gradient(28px at 100% 100%,#f7ff87 99%, #0000 101%) 0 calc(-1*28px),
+            radial-gradient(28px at 0%   50% ,#f7ff87 99%, #0000 101%) 0 calc(-4*28px),
+            radial-gradient(28px,#87ff9e 99%, #0000 101%) calc(-1*calc(28px*.866)) calc(-7*28px/2),
+            radial-gradient(28px,#f7ff87 99%, #0000 101%) calc(-1*calc(28px*.866)) calc(-5*28px/2),
+            radial-gradient(28px at 100% 50%,#87ff9e 99%, #0000 101%) calc(-2*calc(28px*.866)) 28px,
+            radial-gradient(28px,#f7ff87 99%, #0000 101%) calc(-1*calc(28px*.866)) calc(28px/ 2),
+            radial-gradient(28px,#87ff9e 99%, #0000 101%) calc(-1*calc(28px*.866)) calc(28px/-2),
+            radial-gradient(28px,#f7ff87 99%, #0000 101%) 0 calc(-1*28px),
+            radial-gradient(28px,#87ff9e 99%, #0000 101%) calc(28px*.866) calc(28px/-2),
+            radial-gradient(28px,#f7ff87 99%, #0000 101%) calc(28px*.866) calc(28px/ 2)
+            #87ff9e;
+    background-size: calc(4*calc(28px*.866)) calc(6*28px);
+}

@@ -1,0 +1,11 @@
+body {
+    background:
+            radial-gradient(circle farthest-side at 0% 50%,#fe96ff 23.5%,#0000 0)55.65px 79.5px,
+            radial-gradient(circle farthest-side at 0% 50%,#a596ff 24%,#0000 0)50.35px 79.5px,
+            linear-gradient(#fe96ff 14%,#0000 0, #0000 85%,#fe96ff 0)0 0,
+            linear-gradient(150deg,#fe96ff 24%,#a596ff 0,#a596ff 26%,#0000 0,#0000 74%,#a596ff 0,#a596ff 76%,#fe96ff 0)0 0,
+            linear-gradient(30deg,#fe96ff 24%,#a596ff 0,#a596ff 26%,#0000 0,#0000 74%,#a596ff 0,#a596ff 76%,#fe96ff 0)0 0,
+            linear-gradient(90deg,#a596ff 2%,#fe96ff 0,#fe96ff 98%,#a596ff 0%)0 0 #fe96ff;
+    background-size: 106px 159px;
+    background-color: #fe96ff;
+}

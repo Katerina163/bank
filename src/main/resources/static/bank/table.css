@@ -1,0 +1,49 @@
+table.credits {
+    font-family: Verdana, Geneva, sans-serif;
+    border: 4px solid #5DBDB5;
+    background-color: #85C6DE;
+    text-align: center;
+    border-collapse: collapse;
+    margin: auto;
+    width: 80%;
+}
+table.credits td, table.credits th {
+    border: 1px solid #5DBDB5;
+    padding: 5px 10px;
+}
+table.credits tbody td {
+    font-size: 12px;
+    font-weight: bold;
+    color: #000000;
+}
+table.credits td:nth-child(even) {
+    background: #B1FEFF;
+}
+table.credits thead {
+    background: #B1FEFF;
+    border-bottom: 10px solid #5DBDB5;
+}
+table.credits thead th {
+    font-size: 15px;
+    font-weight: bold;
+    color: #000000;
+    text-align: left;
+    border-left: 2px solid #5DBDB5;
+}
+table.credits thead th:first-child {
+    border-left: none;
+}
+
+table.credits tfoot td {
+    font-size: 13px;
+}
+table.credits tfoot .links {
+    text-align: right;
+}
+table.credits tfoot .links a{
+    display: inline-block;
+    background: #FFFFFF;
+    color: #398AA4;
+    padding: 2px 8px;
+    border-radius: 5px;
+}

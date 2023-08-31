@@ -1,0 +1,50 @@
+table.credit {
+    border: 4px solid #CBFBBC;
+    background-color: #F7FF87;
+    width: 80%;
+    text-align: center;
+    border-collapse: collapse;
+    margin: auto;
+}
+table.credit td, table.credit th {
+    border: 1px solid #CBFBBC;
+    padding: 4px 7px;
+}
+table.credit tbody td {
+    font-size: 13px;
+    font-weight: bold;
+    color: #000000;
+}
+table.credit tr:nth-child(even) {
+    background: #CBFBBC;
+}
+table.credit td:nth-child(even) {
+    background: #87FF9E;
+}
+table.credit thead {
+    background: #87FF9E;
+}
+table.credit thead th {
+    font-size: 12px;
+    font-weight: bold;
+    color: #000000;
+    text-align: left;
+    border-left: 2px solid #87FF9E;
+}
+table.credit thead th:first-child {
+    border-left: none;
+}
+
+table.credit tfoot td {
+    font-size: 13px;
+}
+table.credit tfoot .links {
+    text-align: right;
+}
+table.credit tfoot .links a{
+    display: inline-block;
+    background: #FFFFFF;
+    color: #87FF9E;
+    padding: 2px 8px;
+    border-radius: 5px;
+}

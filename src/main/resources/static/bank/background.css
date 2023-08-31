@@ -1,0 +1,11 @@
+body {
+    background:
+            linear-gradient(145deg,#85c6de 10%,#b1feff 10.5% 19%,#0000 19.5% 80.5%,#b1feff 81% 89.5%,#5dbdb5 90%),
+            linear-gradient(145deg,#85c6de 10%,#b1feff 10.5% 19%,#0000 19.5% 80.5%,#b1feff 81% 89.5%,#5dbdb5 90%) calc(32px) 64px,
+            linear-gradient(35deg,#85c6de 10%,#b1feff 10.5% 19%,#0000 19.5% 80.5%,#b1feff 81% 89.5%,#5dbdb5 90%),
+            linear-gradient( 35deg,#85c6de 10%,#b1feff 10.5% 19%,#0000 19.5% 80.5%,#b1feff 81% 89.5%,#5dbdb5 90%) calc(32px) 64px,
+            conic-gradient(from -90deg at 37.5% 50%,#0000 75%,#85c6de 0) calc(32px/4) 0,
+            conic-gradient(from -90deg at 37.5% 50%,#0000 75%,#5dbdb5 0) calc(32px) 0,
+            linear-gradient(90deg,#5dbdb5 38%,#85c6de 0 50%,#5dbdb5 0 62%,#85c6de 0);
+    background-size: 64px calc(2*64px/3);
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Кредиты</title>
+    <link rel="stylesheet" th:href="@{/static/client/background.css}">
+    <link rel="stylesheet" th:href="@{/static/client/table.css}">
+</head>
+<body>
+<div th:insert="~{menu :: menu_client}"></div>
+<div class="container">
+    <div th:if="${message} != null">
+        <p class="text-success mt-2 mb-5" th:text="${message}"></p>
+    </div>
+    <div th:if="${message} == null">
+        <table class="credit">
+            <thead>
+            <tr>
+                <th>Сумма кредита</th>
+                <th>График платежей</th>
+                <th>Процентная ставка</th>
+                <th>Ежемесячный платеж</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="credit : ${credits}">
+                <td th:text="${credit.getSumm()}"></td>
+                <td>
+                    <a th:href="@{/client/credit/graphic/{id}(id=${credit.getId()})}" th:text="Посмотреть"></a>
+                </td>
+                <td th:text="${credit.getPercent()} + '%'"></td>
+                <td th:text="${credit.getMonthly()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Menu</title>
+</head>
+<body>
+<div th:fragment="menu">
+    <div th:if="${clients == 'Гость'}">
+        <div th:insert="~{menu :: menu_guest}"></div>
+    </div>
+    <div th:if="${clients == 'Клиент'}">
+        <div th:insert="~{menu :: menu_client}"></div>
+    </div>
+    <div th:if="${clients == 'Банк'}">
+        <div th:insert="~{menu :: menu_bank}"></div>
+    </div>
+</div>
+
+<div th:fragment="menu_bank">
+    <div class="m-4">
+        <nav class="navbar navbar-expand-lg navbar-light bg-info">
+            <div class="container-fluid">
+                <a th:href="@{/}" class="navbar-brand">₽</a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        <a th:text="${bank}" class="nav-item nav-link">Имя банка</a>
+                        <a th:href="@{/bank/credits}" class="nav-item nav-link">Кредиты</a>
+                        <a th:href="@{/bank/clients}" class="nav-item nav-link">Клиенты</a>
+                    </div>
+                    <div class="navbar-nav">
+                        <a th:href="@{/logout}" class="nav-item nav-link">Выйти</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div th:fragment="menu_client">
+    <div class="m-4">
+        <div class="m-4">
+            <nav class="navbar navbar-expand-lg navbar-light bg-success">
+                <div class="container-fluid">
+                    <a th:href="@{/}" class="navbar-brand">₽</a>
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
+                            data-bs-target="#navbarCollapseClient">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapseClient">
+                        <div class="navbar-nav">
+                            <a th:href="@{/client/profile}" class="nav-item nav-link">Профиль</a>
+                            <a th:href="@{/client/credits}" class="nav-item nav-link">Кредиты</a>
+                        </div>
+                        <form th:action="@{/client/credit}" enctype="multipart/form-data" class="d-flex">
+                            <div class="input-group">
+                                <input type="number" class="form-control" placeholder="100000₽" name="price">
+                                <button type="submit" class="btn btn-warning">Взять кредит</button>
+                            </div>
+                        </form>
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link" th:text="${client}">Имя клиента</a>
+                            <a th:href="@{/logout}" class="nav-item nav-link">Выйти</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="menu_guest">
+    <div class="m-4">
+        <nav class="navbar navbar-expand-lg navbar-light bg-info">
+            <div class="container-fluid">
+                <a th:href="@{/}" class="navbar-brand">₽</a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapses">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapses">
+                    <div class="navbar-nav">
+                    </div>
+                    <div class="navbar-nav">
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Регистрация</a>
+                            <div class="dropdown-menu bg-info">
+                                <li><a class="dropdown-item" th:href="@{/bank/register}">Банк</a></li>
+                                <li><a class="dropdown-item" th:href="@{/client/register}">Клиент</a></li>
+                            </div>
+                        </div>
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Войти</a>
+                            <div class="dropdown-menu bg-info">
+                                <li><a class="dropdown-item" th:href="@{/bank/login}">Банк</a></li>
+                                <li><a class="dropdown-item" th:href="@{/client/login}">Клиент</a></li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+</body>
+</html>

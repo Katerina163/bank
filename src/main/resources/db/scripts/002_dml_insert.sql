@@ -2,8 +2,11 @@
 --changeset Katerina163:1
 insert into client(id, full_name, phone, email, passport, password) values(
 '39f6e3ba-d928-4137-bb2c-5f1f5ed9697a', 'Иванов Иван Иванович', 88005553535, 'ivan@gmail.com', 2957624795, 'admin123');
-insert into bank(id, name, password) values('27eeb75d-4f5e-4eea-8972-41f489d92b40', 'Лучший банк', 'admin123');
 --rollback truncate table client;
+
+--changeset Katerina163:2
+insert into bank(id, name, password) values('27eeb75d-4f5e-4eea-8972-41f489d92b40', 'Лучший банк', 'admin123');
+--rollback truncate table bank;
 
 --changeset Katerina163:3
 insert into credit(id, limit, interest_rate, bank_id) values('25aa6e95-5b1f-4f66-b586-1e3843d106ee', 5000000, 15, '27eeb75d-4f5e-4eea-8972-41f489d92b40');

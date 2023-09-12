@@ -19,7 +19,6 @@
 	<properties>
 		<java.version>11</java.version>
 		<liquibase.config>db/liquibase.properties</liquibase.config>
-		<querydsl.version>5.0.0</querydsl.version>
 	</properties>
 
 	<dependencies>
@@ -89,22 +88,6 @@
 							<goal>clearCheckSums</goal>
 							<goal>update</goal>
 						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>com.mysema.maven</groupId>
-				<artifactId>apt-maven-plugin</artifactId>
-				<version>1.1.3</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>process</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>target/generated-sources/java</outputDirectory>
-							<processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>

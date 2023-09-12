@@ -11,6 +11,6 @@ import java.util.UUID;
 public interface CreditRepository extends CrudRepository<Credit, UUID> {
     Optional<Credit> findById(UUID id);
 
-    @Query("from Credit c where c.bank.id = :id and c.limit > :price")
+    @Query("from Credit c where c.bank.id = :id and c.limit >= :price")
     List<Credit> findAllByBankId(UUID id, Long price);
 }

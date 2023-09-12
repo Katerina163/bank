@@ -1,5 +1,6 @@
 package com.github.Katerina163.bank.service;
 
+import com.github.Katerina163.bank.calculations.Calculator;
 import com.github.Katerina163.bank.dto.response.LoanOffersDto;
 import com.github.Katerina163.bank.dto.response.Payment;
 import com.github.Katerina163.bank.mapper.Mapper;
@@ -15,9 +16,6 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.github.Katerina163.bank.calculations.Calculator.calPercentMonth;
-import static com.github.Katerina163.bank.calculations.Calculator.calcMonthlyRate;
-
 @Service
 @Transactional
 public class SimpleLoanOfferService implements LoanOfferService {
@@ -25,15 +23,18 @@ public class SimpleLoanOfferService implements LoanOfferService {
     private final BankRepository bankRepository;
     private final CreditRepository creditRepository;
     private final Mapper<Tuple, LoanOffersDto> tupleToLoanOffersDtoMapper;
+    private final Calculator calculator;
 
     public SimpleLoanOfferService(LoanOfferRepository repository,
                                   BankRepository bankRepository,
                                   CreditRepository creditRepository,
-                                  Mapper<Tuple, LoanOffersDto> tupleToLoanOffersDtoMapper) {
+                                  Mapper<Tuple, LoanOffersDto> tupleToLoanOffersDtoMapper,
+                                  Calculator calculator) {
         this.repository = repository;
         this.bankRepository = bankRepository;
         this.creditRepository = creditRepository;
         this.tupleToLoanOffersDtoMapper = tupleToLoanOffersDtoMapper;
+        this.calculator = calculator;
     }
 
     @Override
@@ -58,7 +59,7 @@ public class SimpleLoanOfferService implements LoanOfferService {
                         loan.setId(credit.getId());
                         loan.setSumm(credit.getLimit());
                         loan.setPercent(credit.getInterestRate());
-                        loan.setMonthly(calcMonthlyRate(loan.getPercent(), price));
+                        loan.setMonthly(calculator.calcMonthlyRate(loan.getPercent(), price));
                         return loan;
                     })
                     .collect(Collectors.toList());
@@ -75,12 +76,12 @@ public class SimpleLoanOfferService implements LoanOfferService {
         var sum = (Long) offer.get(0);
         var percent = (Integer) offer.get(2);
         LocalDate date = (LocalDate) offer.get(1);
-        var monthly = calcMonthlyRate(percent, sum);
+        var monthly = calculator.calcMonthlyRate(percent, sum);
         List<Payment> result = new ArrayList<>(11);
         var first = new Payment();
         first.setDate(date.plusMonths(1));
         first.setSum(monthly);
-        first.setSumPercent(calPercentMonth(sum, percent));
+        first.setSumPercent(calculator.calPercentMonth(sum, percent));
         first.setSumLoan(monthly - first.getSumPercent());
         first.setDebt(sum - monthly + first.getSumPercent());
         result.add(first);
@@ -89,7 +90,7 @@ public class SimpleLoanOfferService implements LoanOfferService {
             var next = new Payment();
             next.setDate(prev.getDate().plusMonths(1));
             next.setSum(monthly);
-            next.setSumPercent(calPercentMonth(prev.getDebt(), percent));
+            next.setSumPercent(calculator.calPercentMonth(prev.getDebt(), percent));
             next.setSumLoan(monthly - next.getSumPercent());
             next.setDebt(prev.getDebt() - monthly + next.getSumPercent());
             result.add(next);
@@ -98,7 +99,7 @@ public class SimpleLoanOfferService implements LoanOfferService {
         var last = new Payment();
         last.setDate(next.getDate().plusMonths(1));
         last.setSumLoan(next.getDebt());
-        last.setSumPercent(calPercentMonth(next.getDebt(), percent));
+        last.setSumPercent(calculator.calPercentMonth(next.getDebt(), percent));
         last.setSum(last.getSumLoan() + last.getSumPercent());
         last.setDebt(0L);
         result.add(last);

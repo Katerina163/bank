@@ -12,7 +12,7 @@ import java.util.UUID;
 @Getter
 @Setter
 public class CreditDto {
-    @NotNull(groups = CreateGroup.class)
+    @NotNull(groups = ModifyGroup.class)
     private UUID id;
 
     @Range(groups = {CreateGroup.class, ModifyGroup.class})

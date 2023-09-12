@@ -23,7 +23,7 @@ public class ClientDto {
     @Length(min = 2, max = 200, groups = RegisterGroup.class)
     private String fullName;
 
-    @Range(min = 79000000000L, max = 89999999999L, groups = RegisterGroup.class)
+    @Range(min = 70000000000L, max = 89999999999L, groups = RegisterGroup.class)
     private long phone;
 
     @Range(min = 1000000000L, max = 9999999999L, groups = RegisterGroup.class)

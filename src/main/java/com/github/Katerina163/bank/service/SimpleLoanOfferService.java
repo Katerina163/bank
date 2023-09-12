@@ -51,7 +51,7 @@ public class SimpleLoanOfferService implements LoanOfferService {
         Map<String, List<LoanOffersDto>> result = new HashMap<>();
         List<Bank> banks = bankRepository.findAll();
         for (var bank : banks) {
-            List<LoanOffersDto> offers = creditRepository.findAllByBankId(bank.getId())
+            List<LoanOffersDto> offers = creditRepository.findAllByBankId(bank.getId(), price)
                     .stream()
                     .map(credit -> {
                         var loan = new LoanOffersDto();

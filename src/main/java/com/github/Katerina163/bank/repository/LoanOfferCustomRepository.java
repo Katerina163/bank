@@ -1,7 +1,7 @@
 package com.github.Katerina163.bank.repository;
 
-import com.querydsl.core.Tuple;
 
+import javax.persistence.Tuple;
 import java.util.List;
 import java.util.UUID;
 

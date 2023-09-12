@@ -7,17 +7,16 @@ import com.github.Katerina163.bank.model.Bank;
 import com.github.Katerina163.bank.repository.BankRepository;
 import com.github.Katerina163.bank.repository.CreditRepository;
 import com.github.Katerina163.bank.repository.LoanOfferRepository;
-import com.querydsl.core.Tuple;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.Tuple;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.github.Katerina163.bank.calculations.Calculator.calPercentMonth;
 import static com.github.Katerina163.bank.calculations.Calculator.calcMonthlyRate;
-import static com.github.Katerina163.bank.model.QCredit.credit;
-import static com.github.Katerina163.bank.model.QLoanOffer.loanOffer;
 
 @Service
 @Transactional
@@ -73,9 +72,9 @@ public class SimpleLoanOfferService implements LoanOfferService {
     @Override
     public List<Payment> findPaymentsByLoanOfferId(UUID id) {
         var offer = repository.findOfferById(id);
-        var sum = offer.get(loanOffer.loanAmount);
-        var percent = offer.get(credit.interestRate);
-        var date = offer.get(loanOffer.month);
+        var sum = (Long) offer.get(0);
+        var percent = (Integer) offer.get(2);
+        LocalDate date = (LocalDate) offer.get(1);
         var monthly = calcMonthlyRate(percent, sum);
         List<Payment> result = new ArrayList<>(11);
         var first = new Payment();
